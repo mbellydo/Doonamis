@@ -6,8 +6,10 @@
       <li>Pelis</li>
       <li>Series</li>
       <li id="Buscador">
-        <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
-        <input type="text" v-model="search" placeholder="Buscar">
+        <form action="" class="form">
+          <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
+          <input class="buscar" type="text" v-model="search" placeholder="Buscar">
+        </form>
       </li>
       <li>Favoritos</li>
       <li>Mi lista</li>
@@ -20,10 +22,23 @@
 </template>
 
 <script>
+import { buscarSerie } from '../scripts/series.js';
+
 export default {
   name: 'HeaderDoonamis',
   props: {
     msg: String
+  },
+  data(){
+    return{
+      search : ""
+    }
+  },
+  methods:{
+    async buscadorSerie(){
+      if (this.search)
+        this.search = await buscarSerie(this.$route.params.id)
+    }
   }
 }
 </script>  
