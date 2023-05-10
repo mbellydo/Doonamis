@@ -8,6 +8,8 @@ const urlPages = "&page=1"
 const url = `${urlBasica}${urlTopRated}${api_key}${urlLanguage}${urlPages}`
 const urlPoster = 'https://image.tmdb.org/t/p/w500'
 //const urlBuscar = `${urlBasica}/search/tv?${api_key}${urlLanguage}`
+//const formulario = document.querySelector('.form')
+//const buscar = document.querySelector('.buscar')
 
 export async function verSeries(){
     try {
@@ -122,6 +124,20 @@ export async function getEpisodesById(id){
         const data = await respuesta.json()
 
         console.log("Episodes:", data)
+
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+export async function buscarSerie(serie){
+    try {
+        const searchUrl = `${urlBasica}/search/tv${api_key}${urlLanguage}${serie}`
+        const respuesta = await fetch(searchUrl)
+        const data = await respuesta.json()
+
+        console.log("Search:", data)
 
         return data
     } catch (error) {
