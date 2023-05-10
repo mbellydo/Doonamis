@@ -1,0 +1,211 @@
+$font-stack: Avenir, Helvetica, Arial, sans-serif;
+$primary-color: #0C1824; //Body Bg
+$secondary-color: #182430; //Laterals
+$third-color: #182C44; //Header & Footer
+$fourth-color: red;
+$fifth-color: darkred;
+$text-color: white;
+
+/*Responsive*/
+@mixin small {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+} 
+@mixin medium {
+    @media only screen and (max-width: 1024px) {
+      @content;
+    }
+}  
+@mixin large {
+    @media only screen and (max-width: 1440px) {
+      @content;
+    }
+}
+
+/*App*/
+body{
+    margin: 0px;
+}
+#app {
+    font-family: $font-stack;
+    text-align: center;
+    color: $text-color;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    ul{
+        list-style-type: none;
+        padding: 0;
+    }
+    a{
+        color: $text-color;
+    }
+}
+
+/*Header & Footer*/
+.nav{
+    background-color: $third-color;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    a{
+        text-decoration: none;
+
+        #MenuTitle{
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+    ul{
+        padding: 0;
+        
+        @include small {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #Buscador{
+            border-radius: 50px;
+            padding: 5px 10px;
+            background-color: $text-color;
+
+            .fa-magnifying-glass{
+                color: $primary-color;
+                padding: 0 5px 0 0;
+            }
+            input{
+                border-top: 0px;
+                border-right: 0px;
+                border-bottom: 0px;
+            }
+        }
+        li {
+            display: inline-block;
+            margin: 0 10px;
+            
+            @include small {
+                margin: 5px 0;
+            }
+        
+            svg{
+                padding: 10px;
+                border-radius: 100%;
+                color: $third-color;
+                background-color: $text-color;
+            }
+            .fa-bell{
+                color: $fifth-color;
+                background-color: $fourth-color;
+            }
+            .fa-facebook-f{
+                padding: 10px 15px;
+            }
+        }
+    }
+}
+
+/*Body*/
+.cartelera{
+    background-color: $primary-color;
+
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        li{
+            display: inline-block;
+            margin: 10px;
+            
+            img{
+                width: 250px;
+            }
+            a{
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+/*MoreInfo*/
+.MoreInfo {
+    display: flex;
+    text-align: left;
+
+    h1, h2, h3, p, img, li{
+        margin: 1em;
+    }
+
+    @include small {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/*SideBar*/
+.SideBar {
+    width: 20%;
+    background-color: $secondary-color;
+
+    li{
+        display: flex;
+        flex-direction: row;
+
+        img{
+            width: 50%;
+            height: 100%;
+        }
+    }
+
+    button{
+        padding: 5px 15px;
+        border-radius: 50px;
+        margin: 1em 2em;
+    }
+
+    @include small {
+        width: 100%;
+        height: auto;
+        padding: 0px;
+    }
+}
+
+/*Content*/
+.Content {
+    width: 80%;
+    background-color: $primary-color;
+
+    ul{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        li{
+            a{
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                font-weight: bold;
+
+                img{
+                    width: 250px;
+                }
+            }
+        }
+    }
+
+    @include small {
+        width: 100%;
+        height: auto;
+        padding: 0px;
+
+        img{
+            width: 75%;
+        }
+    }
+}
